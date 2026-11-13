@@ -10,6 +10,8 @@
 •	SMB и NFS — сетевой доступ к файлам;
 •	MySQL и PostgreSQL — управление базами данных;
 •	VNC и X11 — удалённый графический доступ.
+  ![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20_1.png)
+  Результаты полного сканирования:![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/scn.txt)
 
 # 1.2.Уязвимости
 1. vsftpd 2.3.4 — Backdoor Command Execution
@@ -49,6 +51,15 @@ sudo nmap -sS -p 1-1000 192.0.0.20
 Был обнаружен SYN-пакет от сканирующей машины и ответ SYN-ACK от целевой машины на порт 80.
 Это свидетельствует о том, что порт открыт и готов принимать TCP-соединения.
 При SYN-сканировании Nmap не завершает стандартное TCP-соединение, а после получения SYN-ACK отправляет RST.
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20_2_1.png)
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/synk.png)
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20_2_1_1.png)
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20_2_1_1_1.png)
+
+
 # 2.2. FIN-сканирование
 Команда:
 sudo nmap -sF -p 1-1000 192.0.0.20
@@ -56,6 +67,14 @@ sudo nmap -sF -p 1-1000 192.0.0.20
 Анализ в Wireshark:
 Был обнаружен TCP-пакет с установленным флагом FIN.
 Особенность метода: закрытые порты обычно отвечают RST, а открытые порты в Linux обычно игнорируют FIN-пакеты. Поэтому отсутствие ответа не позволяет однозначно определить состояние порта.
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5_2_2.png)
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5_2_2_2.png)
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5_2_2_2_2.png)
+
+
 # 2.3. Xmas-сканирование
 Команда:
 sudo nmap -sX -p 1-1000 192.0.0.20
@@ -67,6 +86,13 @@ sudo nmap -sX -p 1-1000 192.0.0.20
 •	URG — Set.
 Эта комбинация флагов характерна для Xmas-сканирования.
 Закрытые порты обычно отвечают RST, а открытые порты Linux, как правило, не отвечают на такие запросы.
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5_2_3.png)
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5_2_3_1.png)
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5_2_3_2.png)
+
 # 2.4. UDP-сканирование
 Команда:
 sudo nmap -sU --top-ports 100 192.0.0.20
@@ -81,4 +107,16 @@ sudo nmap -sU --top-ports 100 192.0.0.20
 2049	NFS	open
 Остальные 93 проверенных UDP-порта определены как закрытые.
 UDP не устанавливает соединение, поэтому открытые службы могут отвечать непосредственно UDP-пакетами. Закрытые порты обычно возвращают ICMP Destination Unreachable, Code 3 (Port Unreachable). Отсутствие ответа может означать состояние open|filtered.
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/%D0%97%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5_2_4_1.png)
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5_2_4.png)
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/4_4.png)
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/4_5.png)
+
+![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/4_6.png)
+
+Запись:![alt text](https://github.com/OlgaStudent1/IT_Hacking/blob/main/img/skan_shar.pcapng)
 
